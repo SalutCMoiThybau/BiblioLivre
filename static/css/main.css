@@ -1,0 +1,23 @@
+/* #logo{
+} */
+body{
+    background-color: #dddddd;
+}
+
+.row {
+    margin: 10px;
+    text-align: center;
+}
+
+tr {
+    vertical-align: middle;
+}
+
+.btn {
+    transition: 0.3s all;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+}

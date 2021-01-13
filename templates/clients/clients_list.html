@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Options :</h5>
+			<hr>
+			<a class="btn btn-primary" href="{% url 'modif_client' client.id %}">Modifier le Client</a>
+			<a class="btn btn-danger" href="{% url 'supp_client' client.id %}">Supprimer le Client</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informations</h5>
+			<hr>
+			<p>NOM : {{client.nom}} {{client.prenom}}</p>
+			<p>ADRESSE MAIL : {{client.adresse_mail}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total des Emprunts</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{total_emprunts}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{myFilter.form}}
+		    	<button class="btn btn-secondary" type="submit">Chercher</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Livre</th>
+					<th>Début de l'emprunt</th>
+					<th>Fin de l'emprunt</th>
+					<th>Status</th>
+					<th>Mettre à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+				{% for emprunt in emprunt %}
+				<tr>
+					<th>{{emprunt.livre}}</th>
+					<th>{{emprunt.date_debut_emprunt}}</th>
+					<th>{{emprunt.date_fin_emprunt}}</th>
+					<th>{{emprunt.status}}</th>
+					<th><a class="btn btn-outline-primary" href="">Modifier</a></th>
+					<th><a class="btn btn-outline-danger" href="">Supprimer</a></th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div> 
+
+{% endblock %}

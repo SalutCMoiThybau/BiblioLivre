@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>CLIENTS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajout_client' %}">Créer un Client</a>
+			<table class="table table-sm">
+				<br>
+				<tr>
+					<th>ID</th>
+					<th>NOM</th>
+					<th>PRENOM</th>
+					<th>ADRESSE MAIL</th>
+					<th>DÉTAILS</th>
+				</tr>
+				{% for client in clients %}
+				<tr>
+					<!-- <th><a href="{% url 'client' client.id %}">{{client.id}}</a></th> -->
+					<th>{{client.id}}</th>
+					<th>{{client.nom}}</th>
+					<th>{{client.prenom}}</th>
+					<th>{{client.adresse_mail}}</th>
+					<th><a class="btn btn-success" href="{% url 'client' client.id %}">Plus...</a></th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>DERNIERS EMPRUNTS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajout_emprunt' %}">Ajouter un emprunt</a>
+			<table class="table table-sm">
+				<br>
+				<tr>
+					<th>ID</th>
+					<th>LIVRE</th>
+					<th>Date de l'emprunt</th>
+					<th>STATUS</th>
+					<th>CLIENT</th>
+					<th>Mettre à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+				{% for emprunt in emprunts %}
+				<tr>
+					<th>{{emprunt.id}}</th>
+					<th>{{emprunt.livre}}</th>
+					<th>{{emprunt.date_debut_emprunt}}</th>
+					<th>{{emprunt.status}}</th>
+					<th>{{emprunt.client}}</th>
+					<th><a class="btn btn-outline-primary" href="{% url 'modif_emprunt' emprunt.id %}">Modifier</a></th>
+					<th><a class="btn btn-outline-danger" href="{% url 'supp_emprunt' emprunt.id %}">Supprimer</a></th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
