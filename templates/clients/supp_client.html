@@ -2,11 +2,13 @@
 
 {% block content %}
 
-<p>Voulez-vous supprimer ce client ?</p>
-<form action="{% url 'supp_client' item.id %}" method="POST">
-    {% csrf_token %}
-    <a class="btn btn-warning" href="{% url 'client' item.id %}">Annuler</a>
-    <input class="btn btn-danger" type="submit" value="Confirmer">
-</form>
+<div class="row">
+    <p>Voulez-vous supprimer ce client ?</p>
+    <form action="{% url 'supp_client' item.id %}" method="POST">
+        {% csrf_token %}
+        <a class="btn btn-warning" href="{% url 'client' item.id %}">Annuler</a>
+        <input class="btn btn-danger" type="submit" value="Confirmer">
+    </form>
+</div>
 
 {% endblock %}
